@@ -6,7 +6,7 @@ COPY sources.list /etc/apt/sources.list
 # 执行 Debian 的软件升级
 # 同时执行必要组件的安装
 RUN apt-get update && \
-    apt-get install -y git zip unzip libldap-2.4-2=2.4.47+dfsg-3+deb10u6 zlib1g=1:1.2.11.dfsg-1 libzip-dev libldap-dev mariadb-client --allow-downgrades && \
+    apt-get install -y git zip unzip mariadb-client --allow-downgrades && \
     apt-get clean \
 # 这是 PHP Docker 安装扩展的特殊命令，这里是在 Docker 环境中的 PHP 安装扩展，如有需要可自行添加修改
 RUN docker-php-ext-install -j$(nproc) zip ldap bcmath mysqli pdo_mysql sockets
